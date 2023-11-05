@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  open_bid_server:
+    build:
+      context: .
+    container_name: open_bid
+    restart: always
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/open_bid
+    ports:
+      - "8000:8000"
