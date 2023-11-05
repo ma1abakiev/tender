@@ -5,12 +5,13 @@ import geoIcon from '../../assets/img/geo.svg'
 import walletIcon from '../../assets/img/./Icon/Wallet.svg'
 import usersIcon from '../../assets/img/./Icon/Users.svg'
 
-const Card = ({name_of_company}) => {
+const Card = (item) => {
+  console.log(item)
   return (
     <div className="card">
       <img src={gerbImg} alt="Card Image" />
       <div className="card-text">
-        <h2>{name_of_company}</h2>
+        <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
         <div className="rating">
           {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
           <img src={ratingIcon} alt="" />

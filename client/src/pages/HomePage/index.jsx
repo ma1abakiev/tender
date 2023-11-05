@@ -13,28 +13,25 @@ import walletIcon from '../../assets/img/./Icon/Wallet.svg'
 import usersIcon from '../../assets/img/./Icon/Users.svg'
 import footerIcon from '../../assets/img/footerLogo.svg'
 import Card from '../../components/Card'
+import axios from 'axios'
 
 const HomePage = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/purchase')
+    // Здесь отправляем запрос на сервер с использованием axios
+    axios
+      .get('http://localhost:8000/api/purchase/')
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
-      })
-      .then((data) => {
-        setData(data)
+        // Обновляем состояние компонента с полученными данными
+        setData(response.data)
       })
       .catch((error) => {
+        // Обрабатываем ошибку
         console.error(error)
       })
   }, [])
-  setTimeout(() => {
-    console.log(data)
-  }, 5000)
+  console.log(data)
   return (
     <>
       <header className="header">
@@ -100,122 +97,11 @@ const HomePage = () => {
               Последние <span>добавленные</span>
             </h2>
             <div className="last__content">
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
+              {data.map((item, i) => {
+                if (i < 4) {
+                  return <Card item={item} key={i}></Card>
+                }
+              })}
             </div>
             <div className="more-block">
               <button className="more">Показать еще 18</button>
@@ -228,122 +114,11 @@ const HomePage = () => {
               Недавно <span>Завершённые</span>
             </h2>
             <div className="last__content">
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <img src={gerbImg} alt="Card Image" />
-                <div className="card-text">
-                  <h2>Каракольское муниципальное предприятие "Водоканал"</h2>
-                  <div className="rating">
-                    {/* Здесь вы можете использовать компонент рейтинга с звёздочками */}
-                    <img src={ratingIcon} alt="" />
-                    <span>(23)</span>
-                  </div>
-                  <div className="card__box">
-                    <div>
-                      <div className="info">
-                        <img src={geoIcon} alt="" />
-                        <span>Каракол 5 мин пешком</span>
-                      </div>
-                      <div className="participants">
-                        <img src={usersIcon} alt="" />
-
-                        <span>10</span>
-                      </div>
-                      <div className="money">
-                        <img src={walletIcon} alt="" />
-                        <span>1000$</span>
-                      </div>
-                    </div>
-                    <button>Подробнее</button>
-                  </div>
-                </div>
-              </div>
+              {data.map((item, i) => {
+                if (i < 4) {
+                  return <Card item={item} key={i}></Card>
+                }
+              })}
             </div>
             <div className="more-block">
               <button className="more">Показать еще 18</button>
