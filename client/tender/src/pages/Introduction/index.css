@@ -1,72 +1,246 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.header {
-  background-color: rgb(77, 77, 160);
-  height: 100px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.header__content {
+.header__top {
+  height: 50px;
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+.header__top-right {
+  display: flex;
+  gap: 21px;
+}
+.header__bottom {
+  display: flex;
+  justify-content: space-between;
   height: 100px;
+  align-items: center;
 }
 .header__nav {
   display: flex;
-  gap: 15px;
-}
-.header__logo {
-  color: white;
-  text-decoration: none;
-  position: relative;
-  left: 100px;
+  gap: 25px;
 }
 .header__link {
-  color: white;
   text-decoration: none;
+  color: black;
+  font-family: Raleway;
+}
+/* Intro */
+.intro {
+  margin-top: 100px;
+}
+.intro__content {
+  display: flex;
+  justify-content: space-between;
+}
+.intro__title {
+  color: #333;
+  font-size: 60px;
+  line-height: 105%; /* 63px */
+  text-transform: uppercase;
+  font-family: Montserrat;
+}
+.intro__text {
+  color: #333;
+  font-size: 24px;
+  max-width: 550px;
+  margin-top: 100px;
 }
 
-/* Tender */
-.tender {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-  max-width: 400px;
-  border-radius: 15px;
-  background-color: rgb(77, 77, 160);
+.intro__text > span {
+  color: #06c;
+  font-family: Raleway;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-.tender__info {
+/* Kyrgyzstan */
+.kyrgyzstan {
+  margin-top: 250px;
+}
+/* Last */
+.last {
+  margin-top: 150px;
+}
+
+.last__content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+.last__title {
+  color: #333;
+  font-family: Montserrat;
+  font-size: 42px;
+  line-height: 150%; /* 63px */
+  text-transform: uppercase;
+}
+.last__title > span {
+  color: #06c;
+  /* text-transform: uppercase; */
+}
+
+.card {
+  width: 280px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-.tender__title,
-.tender__text,
-.tender__time-text,
-.tender__money-text {
-  color: white;
+  border-radius: 35px;
 }
 
-
-.tender__title {
-  font-weight: 900;
-  font-size: 25px;
+.card img {
+  object-fit: cover;
+}
+.card-text {
+  padding: 20px;
+}
+.card-text h2 {
+  margin: 10px 0;
+  color: #333;
+  /* Desktop/H4 */
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  max-width: 220px;
 }
 
-.tender__bottom {
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating span {
+  margin-right: 10px;
+}
+
+.info,
+.participants,
+.money {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.info svg,
+.participants svg,
+.money svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.card__box {
+  display: flex;
+}
+.card__box > button {
+  padding: 10px 20px;
+  color: black;
+  cursor: pointer;
+  align-self: flex-end;
+
+  color: #333;
+
+  text-align: center;
+  /* Desktop/H7 */
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50px;
+  border: 2px solid #06c;
+
+  background: #fff;
+}
+.info,
+.participants,
+.money {
+  display: flex;
+  gap: 10px;
+}
+
+.more {
+  color: #fff;
+
+  text-align: center;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 21px 29px;
+  border-radius: 50px;
+  background-color: #0066cc;
+  border: none;
+  cursor: pointer;
+}
+.more-block {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Fast */
+
+.fast {
+  margin-top: 150px;
+  margin-bottom: 120px;
+}
+.fast__content {
+  background-color: #ecf4fd;
+  padding: 60px 255px;
+  border-radius: 30px;
+}
+.fast__text {
+  color: #333;
+  text-align: center;
+  /* Desktop/H3 */
+  font-family: Raleway;
+  font-size: 26px;
+  line-height: 130%;
+  width: 600px;
+  margin: 0 auto;
+}
+.fast__subtext {
+  color: #333;
+  /* Desktop/H4 */
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 130%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.fast__subtext,
+.fast__text > span {
+  color: #06c;
+}
+
+/* Footer */
+.footer {
+  margin-top: 120px;
+}
+.footer__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.tender__time {
+.footer__left {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  flex-direction: column;
 }
-.tender__time-text,
-.tender__money-text {
-  font-weight: 700;
-  font-size: 12px;
+.footer__nav {
+  display: flex;
+  gap: 30px;
+}
+.footer__link {
+  text-decoration: none;
+  color: black;
 }
