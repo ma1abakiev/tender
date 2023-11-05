@@ -1,3 +1,5 @@
+import time
+
 from django.core.management import BaseCommand
 from django.db import DatabaseError
 
@@ -6,6 +8,8 @@ from purchase.services.service_instagram import public_post_instagram
 from purchase.services.service_parser import get_list_obj
 from purchase.models import Purchase
 from purchase.services.service_telegram_bot import send_telegram_message
+
+from account.models import SubscriberNewsletter
 
 
 class Command(BaseCommand):
@@ -21,7 +25,10 @@ class Command(BaseCommand):
             p = Purchase(**obj)
             try:
                 p.save()
+                list_email = SubscriberNewsletter.objects.filter(subscribed=True).values_list('email', flat=True)
+                send_email(p, list_email)
                 send_telegram_message(p)
+                time.sleep(3)
                 public_post_instagram(p)
             except DatabaseError:
                 pass

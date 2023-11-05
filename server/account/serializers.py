@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-from .models import User, Complaint
+from .models import User, Complaint, SubscriberNewsletter
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -35,3 +35,9 @@ class ComplaintSerializer(serializers.ModelSerializer):
     class Meta:
         model = Complaint
         fields = '__all__'
+
+
+class SubscriberNewsletterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubscriberNewsletter
+        fields = ['id', 'email', 'subscribed']

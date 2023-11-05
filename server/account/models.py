@@ -48,3 +48,11 @@ class Complaint(models.Model):
     phone_number = PhoneNumberField()
     description = models.TextField()
     purchase_number = models.ForeignKey(Purchase, on_delete=models.PROTECT)
+
+
+class SubscriberNewsletter(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.email

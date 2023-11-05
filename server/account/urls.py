@@ -2,11 +2,12 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from .views import UserView, UserLoginAPIView, UserLogoutAPIView, UserRegistrationAPIView, ComplaintView
+from .views import UserView, UserLoginAPIView, UserLogoutAPIView, UserRegistrationAPIView, ComplaintView, SubscriberNewsletterView
 
 router = routers.DefaultRouter()
 router.register('', UserView, basename='user')
-router.register(r'complaint/', ComplaintView, basename='user')
+router.register(r'complaint/', ComplaintView, basename='complaint')
+router.register(r'subscribe-newsletter/', SubscriberNewsletterView, basename='user')
 
 urlpatterns = [
     path("register/", UserRegistrationAPIView.as_view(), name="create-user"),

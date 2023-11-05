@@ -146,8 +146,8 @@ AUTH_USER_MODEL = 'account.User'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'thefresh.friends.software@gmail.com'
-EMAIL_HOST_PASSWORD = 'gfnxkmeooujsvqrf'
+EMAIL_HOST_USER = 'asanovkurmanbek342@gmail.com'
+EMAIL_HOST_PASSWORD = 'czwwcpbpdprvkcvv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

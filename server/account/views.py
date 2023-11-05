@@ -5,8 +5,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from account.models import User, Complaint
-from account.serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer
+from account.models import User, Complaint, SubscriberNewsletter
+from account.serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer, \
+    SubscriberNewsletterSerializer
 
 
 class UserRegistrationAPIView(GenericAPIView):
@@ -62,3 +63,8 @@ class ComplaintView(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer
 
+
+class SubscriberNewsletterView(viewsets.ModelViewSet):
+    queryset = SubscriberNewsletter.objects.all()
+    serializer_class = SubscriberNewsletterSerializer
+    permission_classes = (IsAuthenticated,)
