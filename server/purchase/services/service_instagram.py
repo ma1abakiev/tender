@@ -28,7 +28,7 @@ def public_post_instagram(obj):
            f'Срок подачи заявок: {obj.bids_submission_deadline}\n'\
            f'Ссылка на источник: {obj.url}'
     cl.photo_upload(
-        path="purchase\services\purchase_image.jpg",
+        path="purchase/services/purchase_image.jpg",
         caption=text,
         extra_data={
             "custom_accessibility_caption": "alt text example",
