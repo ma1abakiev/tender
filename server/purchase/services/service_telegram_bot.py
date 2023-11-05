@@ -31,14 +31,15 @@ def send_telegram_message(obj):
         'Simplified': 'Простой',
     }
 
-    text = f'<strong>Номер закупки:</strong> {obj.number}\n' \
-           f'<strong>Наименование компании:</strong> {obj.name_of_company}\n' \
-           f'<strong>Тип закупки:</strong> {type_of_procurement_dict[obj.type_of_procurement]}\n' \
-           f'<strong>Наименование закупки:</strong> {obj.purchase_name}\n' \
-           f'<strong>Метод закупки:</strong> {procurement_method_dict[obj.procurement_method]}\n' \
-           f'<strong>Плановая сумма:</strong> {obj.planned_amount}\n' \
-           f'<strong>Дата публикации:</strong> {obj.date_published}\n' \
-           f'<strong>Срок подачи заявок:</strong> {obj.bids_submission_deadline}'
+    text = f'<strong>📋 Информация о закупке 🛒</strong>\n' \
+           f'<strong>🔢 Номер закупки:</strong> {obj.number}\n' \
+           f'<strong>🏢 Наименование компании:</strong> {obj.name_of_company}\n' \
+           f'<strong>🏭 Тип закупки:</strong> {type_of_procurement_dict[obj.type_of_procurement]}\n' \
+           f'<strong>📦 Наименование закупки:</strong> {obj.purchase_name}\n' \
+           f'<strong>💼 Метод закупки:</strong> {procurement_method_dict[obj.procurement_method]}\n' \
+           f'<strong>💰 Плановая сумма:</strong> {obj.planned_amount}\n' \
+           f'<strong>📅 Дата публикации:</strong> {obj.date_published}\n' \
+           f'<strong>🕒 Срок подачи заявок:</strong> {obj.bids_submission_deadline}'
     chat_id = '-1002084317450'
     bot.send_message(chat_id, text, reply_markup=markup)
 
